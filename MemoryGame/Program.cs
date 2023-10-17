@@ -27,7 +27,16 @@ namespace MemoryGame
 
                 Console.WriteLine("Kies 2e kaart:");
                 int i2 = int.Parse(Console.ReadLine());
+
+                //Check of keuzes niet gelijk zijn
+                if (i1 == i2)
+                {
+                    Console.WriteLine("Je kan niet dezelfde kaart kiezen!");
+                    continue;
+                }
+
                 Game.ShowCard(i2);
+
 
                 Game.CompareCards(i1, i2);
             }
