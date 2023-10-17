@@ -23,10 +23,19 @@ namespace MemoryGame
 
                 Console.WriteLine("Kies 1e kaart:");
                 int i1 = int.Parse(Console.ReadLine());
+                if (Game.GetDiscovered(i1)) {  
+                    Console.WriteLine("Kaart 1 is al omgedraaid!");
+                    continue;
+                }
                 Game.ShowCard(i1);
 
                 Console.WriteLine("Kies 2e kaart:");
                 int i2 = int.Parse(Console.ReadLine());
+                if (Game.GetDiscovered(i2))
+                {
+                    Console.WriteLine("Kaart 2 is al omgedraaid!");
+                    continue;
+                }
 
                 //Check of keuzes niet gelijk zijn
                 if (i1 == i2)

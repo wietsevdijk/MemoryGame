@@ -36,7 +36,7 @@ namespace MemoryGame
         }
 
         public static void ShowCard(int cardPos) {
-            Console.WriteLine($"Gekozen kaart is {cardArray[cardPos-1].Value}");
+            Console.WriteLine($"Kaart {cardPos} is {cardArray[cardPos-1].Value}");
         }
 
         public static void CompareCards(int pos1, int pos2) { 
@@ -57,6 +57,12 @@ namespace MemoryGame
             else {
                 Console.WriteLine("Geen match");
             }
+        }
+
+        public static bool GetDiscovered(int cardPos) {
+            if (cardArray[cardPos-1].Discovered) return true;
+
+            return false;
         }
 
         //Print alle kaarten ondersteboven, "O" = normaal, X = "ontdekt"
