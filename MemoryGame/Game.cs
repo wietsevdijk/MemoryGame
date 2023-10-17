@@ -13,10 +13,12 @@ namespace MemoryGame
         private static Random rng = new Random();
         private static Card[] cardArray;
 
-        private static int _turns = 0;
+        private static int _tries = 0;
 
         private static bool _complete = false;
         public static bool Complete { get => _complete; }
+        public static int Tries { get => _tries; }
+
         private static int _matches = 0;
 
         //Returns array of shuffled cards
@@ -40,7 +42,7 @@ namespace MemoryGame
         }
 
         public static void CompareCards(int pos1, int pos2) { 
-            _turns++;
+            _tries++;
 
             bool match = cardArray[pos1 - 1].Value == cardArray[pos2 - 1].Value ? true : false;
 

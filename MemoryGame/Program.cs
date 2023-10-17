@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace MemoryGame
 {
@@ -16,6 +17,9 @@ namespace MemoryGame
                 Game.PrintCardValues();
             }
 
+
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             //gameloop
             while (!Game.Complete)
             {
@@ -49,8 +53,16 @@ namespace MemoryGame
 
                 Game.CompareCards(i1, i2);
             }
+            sw.Stop();
 
-            Console.WriteLine("\nGewonnen!");
+            double timeElapsed = sw.Elapsed.Seconds;
+
+            double score = (Math.Pow(cardPairs * 2, 2) / (timeElapsed * Game.Tries)) * 1000;
+            
+            Console.WriteLine($"\nGewonnen!" +
+                $"\nTijd: {timeElapsed}" +
+                $"\nBeurten : {Game.Tries}" +
+                $"\nScore: {score}");
 
 
         }
