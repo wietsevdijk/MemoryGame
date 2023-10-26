@@ -52,12 +52,16 @@ namespace MemoryGame
                 cardArray[pos2 - 1].Discovered = true;
                 _matches++;
 
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Match!");
+                Console.ForegroundColor = ConsoleColor.White;
 
                 if (_matches == cardArray.Length / 2) { _complete = true; }
             }
             else {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Geen match");
+                Console.ForegroundColor = ConsoleColor.White;
             }
         }
 
