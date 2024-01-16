@@ -8,102 +8,40 @@ using System.Threading.Tasks;
 
 namespace MemoryGame
 {
-    public static class Game
+    public class Game
     {
-        private static Random rng = new Random();
-        private static Card[] cardArray;
+        private Card[] _cardArray;
+        public Card[] CardArray { get => _cardArray; set => _cardArray = value; }
+        // Amount of attempts
+        private int _tries = 0;
+        public int Tries { get => _tries; }
 
-        private static int _tries = 0;
+        // Whether game is finished
+        private bool _complete = false;
+        public bool Complete { get => _complete; set => _complete = value; }
+        
+        // Amount of correct matches
+        private int _matches = 0;
+        public int Matches { get => _matches; }
 
-        private static bool _complete = false;
-        public static bool Complete { get => _complete; }
-        public static int Tries { get => _tries; }
+        private string _playerName;
+        public string PlayerName { get => _playerName; set => _playerName = value; }
 
-        private static int _matches = 0;
-
-        //Returns array of shuffled cards
-        public static void InitializeCards(int amountCardPairs) {
-            Card[] cards = new Card[amountCardPairs * 2];
-
-            int cardValue = 0;
-            for (int i = 0; i < amountCardPairs * 2; i++)
-            {
-                cards[i] = new Card(cardValue);
-                if (!(i % 2 == 0)) cardValue++;
-            }
-
-            rng.Shuffle(cards);
-
-            cardArray = cards;        
+        public Game(Card[] cards, string playerName) {
+            _cardArray = cards;
+            _playerName = playerName;
         }
 
-        public static void ShowCard(int cardPos) {
-            Console.WriteLine($"Kaart {cardPos} is {cardArray[cardPos-1].Value}");
+        public int GetValue(int cardPos) {
+            return _cardArray[cardPos - 1].Value;
         }
 
-        public static void CompareCards(int pos1, int pos2) { 
-            _tries++;
-
-            bool match = cardArray[pos1 - 1].Value == cardArray[pos2 - 1].Value ? true : false;
-
-            if (match)
-            {
-                cardArray[pos1 - 1].Discovered = true;
-                cardArray[pos2 - 1].Discovered = true;
-                _matches++;
-
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Match!");
-                Console.ForegroundColor = ConsoleColor.White;
-
-                if (_matches == cardArray.Length / 2) { _complete = true; }
-            }
-            else {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Geen match");
-                Console.ForegroundColor = ConsoleColor.White;
-            }
+        public bool GetDiscovered(int cardPos) {
+            return _cardArray[cardPos - 1].Discovered;
         }
 
-        public static bool GetDiscovered(int cardPos) {
-            if (cardArray[cardPos-1].Discovered) return true;
-
-            return false;
-        }
-
-        //Print alle kaarten ondersteboven, "O" = normaal, X = "ontdekt"
-        public static void PrintCards() { 
-            for (int i = 0; i < cardArray.Length; i++) {
-                string flipped = cardArray[i].Discovered ? "X" : "O";
-                Console.Write($"{flipped} ");
-            }
-            Console.WriteLine();
-        }
-
-
-
-
-        //DEBUG: print all card values
-        public static void PrintCardValues()
-        {
-            for (int i = 0; i < cardArray.Length; i++)
-            {
-                Console.Write($"{cardArray[i].Value} ");
-            }
-            Console.WriteLine();
-        }
-
-        //Used for shuffling cards in InitializeCards
-        private static void Shuffle<T>(this Random rng, T[] array)
-        {
-            int n = array.Length;
-            while (n > 1)
-            {
-                int k = rng.Next(n--);
-                T temp = array[n];
-                array[n] = array[k];
-                array[k] = temp;
-            }
+        public bool GetFlipped(int cardPos) {
+            return _cardArray[cardPos - 1].Flipped;
         }
 
     }
