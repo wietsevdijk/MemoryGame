@@ -57,6 +57,7 @@ namespace MemoryGame.ConsoleApp {
                 }
 
                 bool match = gc.CompareCards(i1, i2);
+                // GA HIER VERDER
             }
 
             public static void CompareCards(int pos1, int pos2) {
