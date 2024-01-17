@@ -103,11 +103,12 @@ namespace MemoryGame {
         public void PrintCards() {
             CheckIfGameActive();
 
+            Console.Write("Kaarten:\n");
             for (int i = 0; i < currentGame.CardArray.Length; i++) {
                 string flipped = currentGame.CardArray[i].Discovered ? "X" : "O";
                 Console.Write($"{flipped} ");
             }
-            Console.WriteLine();
+            Console.WriteLine("\n");
         }
 
         // DEBUG: Print all card values / cards face up
