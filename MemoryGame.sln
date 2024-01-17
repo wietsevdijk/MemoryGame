@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGame", "MemoryGame\MemoryGame.csproj", "{C73ADBC6-74C8-465D-B749-136D1AF48A40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryGame.ConsoleApp", "MemoryGame.ConsoleApp\MemoryGame.ConsoleApp.csproj", "{77D40FF7-B984-47C7-9064-B5E8FAD738E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGame.Tests", "MemoryGame.Tests\MemoryGame.Tests.csproj", "{D3105C5D-BAD5-4687-AB40-A178E6C108FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGame", "MemoryGame\MemoryGame.csproj", "{C8E59133-AD57-4FCF-99C7-6946F9A44E3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C73ADBC6-74C8-465D-B749-136D1AF48A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C73ADBC6-74C8-465D-B749-136D1AF48A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C73ADBC6-74C8-465D-B749-136D1AF48A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C73ADBC6-74C8-465D-B749-136D1AF48A40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D40FF7-B984-47C7-9064-B5E8FAD738E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D40FF7-B984-47C7-9064-B5E8FAD738E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D40FF7-B984-47C7-9064-B5E8FAD738E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D40FF7-B984-47C7-9064-B5E8FAD738E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3105C5D-BAD5-4687-AB40-A178E6C108FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3105C5D-BAD5-4687-AB40-A178E6C108FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3105C5D-BAD5-4687-AB40-A178E6C108FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3105C5D-BAD5-4687-AB40-A178E6C108FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8E59133-AD57-4FCF-99C7-6946F9A44E3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8E59133-AD57-4FCF-99C7-6946F9A44E3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8E59133-AD57-4FCF-99C7-6946F9A44E3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8E59133-AD57-4FCF-99C7-6946F9A44E3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
