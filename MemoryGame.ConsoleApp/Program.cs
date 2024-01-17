@@ -1,6 +1,4 @@
-﻿using MemoryGame;
-
-namespace MemoryGame.ConsoleApp {
+﻿namespace MemoryGame.ConsoleApp {
     internal class Program {
         static void Main(string[] args) {
             bool debug = true;
@@ -61,11 +59,11 @@ namespace MemoryGame.ConsoleApp {
                 if (match) {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Match!");
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Gray;
                 } else {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Geen match");
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Gray;
                 }
             }
 
@@ -76,7 +74,7 @@ namespace MemoryGame.ConsoleApp {
             $"\nBeurten : {game.Tries}" +
             $"\nScore: {game.Score}");
 
-            Console.ForegroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
     }
 }
