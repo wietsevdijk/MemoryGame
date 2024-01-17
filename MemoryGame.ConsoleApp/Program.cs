@@ -37,7 +37,9 @@
                     Console.WriteLine("Kaart 1 is al omgedraaid!");
                     continue;
                 }
-                Console.WriteLine(game.GetValue(i1));
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine($"Kaart 1 is: {game.GetValue(i1)}\n");
+                Console.ForegroundColor = ConsoleColor.Gray;
 
                 Console.WriteLine("Kies 2e kaart:");
                 // TO-DO: Handel ongeldige input af
@@ -46,7 +48,9 @@
                     Console.WriteLine("Kaart 2 is al omgedraaid!");
                     continue;
                 }
-                Console.WriteLine(game.GetValue(i2));
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine($"Kaart 2 is: {game.GetValue(i2)}\n");
+                Console.ForegroundColor = ConsoleColor.Gray;
 
                 //Check of keuzes niet gelijk zijn
                 if (i1 == i2) {
@@ -71,7 +75,7 @@
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"\nGewonnen!" +
             $"\nTijd: {game.TimeElapsed}" +
-            $"\nBeurten : {game.Tries}" +
+            $"\nBeurten: {game.Tries}" +
             $"\nScore: {game.Score}");
 
             Console.ForegroundColor = ConsoleColor.Gray;
