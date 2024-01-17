@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace MemoryGame {
     public class GameController {
-        private Random rng = new Random();
         private Stopwatch sw = new Stopwatch();
         private Game? currentGame = null;
 
@@ -33,7 +32,7 @@ namespace MemoryGame {
             }
 
             // Shuffle card array
-            Shuffle(rng, cards);
+            Shuffle(cards);
 
             return cards;
         }
@@ -79,13 +78,19 @@ namespace MemoryGame {
                 return false;
             }
 
+            // Increment amount of tries
+            currentGame.Tries++;
 
             // Check if card values match
             bool match = currentGame.GetValue(pos1) == currentGame.GetValue(pos2) ? true : false;
 
             if (match) {
+                // Mark cards as discovered
                 currentGame.CardArray[pos1 - 1].Discovered = true;
                 currentGame.CardArray[pos2 - 1].Discovered = true;
+
+                // Increment amount of matches
+                currentGame.Matches++;
 
                 // Check if all cards are discovered, and mark game as complete
                 CheckIfGameFinished();
@@ -108,19 +113,24 @@ namespace MemoryGame {
         // DEBUG: Print all card values / cards face up
         public void PrintCardsWithValues() {
             CheckIfGameActive();
-
-            Console.WriteLine("VALUES:\n-----");
+            Console.ForegroundColor = ConsoleColor.Blue;
             for (int i = 0; i < currentGame.CardArray.Length; i++) {
                 Console.Write($"{currentGame.CardArray[i].Value} ");
             }
-            Console.WriteLine("-----");
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.White;
         }
 
 
         private void CheckIfGameFinished() {
+            CheckIfGameActive();
+
             if (!currentGame.Complete && currentGame.Matches == currentGame.CardArray.Length / 2) {
                 currentGame.Complete = true;
                 sw.Stop();
+                currentGame.TimeElapsed = sw.Elapsed.Seconds;
+
+                currentGame.Score = CalculateScore(currentGame.CardArray.Length, currentGame.TimeElapsed, currentGame.Tries);
                 // TO-DO: Event (indien nodig)
             }
         }
@@ -132,8 +142,19 @@ namespace MemoryGame {
             }
         }
 
-        // Used for shuffling cards in InitializeCards
-        private static void Shuffle<T>(Random rng, T[] array) {
+        public static int CalculateScore(int amountCards, double timeElapsed, int tries) {
+            // NOTE: Since integers are used, the score will be truncated
+            return (int)(Math.Pow(amountCards, 2) / (timeElapsed * tries) * 1000);
+        }
+
+        /// <summary>
+        /// Used for shuffling cards in InitializeCards
+        /// Source: https://stackoverflow.com/questions/108819/best-way-to-randomize-an-array-with-net
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="array"></param>
+        private static void Shuffle<T>(T[] array) {
+            Random rng = new Random();
             int n = array.Length;
             while (n > 1) {
                 int k = rng.Next(n--);

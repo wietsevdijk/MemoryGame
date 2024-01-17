@@ -57,24 +57,11 @@ namespace MemoryGame.ConsoleApp {
                 }
 
                 bool match = gc.CompareCards(i1, i2);
-                // GA HIER VERDER
-            }
-
-            public static void CompareCards(int pos1, int pos2) {
-                _tries++;
-
-                bool match = cardArray[pos1 - 1].Value == cardArray[pos2 - 1].Value ? true : false;
-
+                
                 if (match) {
-                    cardArray[pos1 - 1].Discovered = true;
-                    cardArray[pos2 - 1].Discovered = true;
-                    _matches++;
-
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("Match!");
                     Console.ForegroundColor = ConsoleColor.White;
-
-                    if (_matches == cardArray.Length / 2) { _complete = true; }
                 } else {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Geen match");
@@ -82,6 +69,14 @@ namespace MemoryGame.ConsoleApp {
                 }
             }
 
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"\nGewonnen!" +
+            $"\nTijd: {game.TimeElapsed}" +
+            $"\nBeurten : {game.Tries}" +
+            $"\nScore: {game.Score}");
+
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 }
