@@ -1,9 +1,6 @@
 namespace MemoryGame.Tests {
     [TestFixture]
     public class GameControllerTests {
-        [SetUp]
-        public void Setup() {
-        }
 
         [TestCase(4, 10, 2, 800)]
         [TestCase(10, 20, 5, 1000)]
