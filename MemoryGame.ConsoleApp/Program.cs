@@ -74,6 +74,7 @@
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"\nGewonnen!" +
+            $"\nNaam: {game.PlayerName}" +
             $"\nTijd: {game.TimeElapsed}" +
             $"\nBeurten: {game.Tries}" +
             $"\nScore: {game.Score}");
