@@ -1,6 +1,11 @@
-﻿namespace MemoryGame.ConsoleApp {
+﻿using MemoryGame.DataAccess.SqlServer;
+
+namespace MemoryGame.ConsoleApp {
     internal class Program {
         static void Main(string[] args) {
+            GameRepository gameRepository = new GameRepository(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MemoryDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False;");
+
+
             bool debug = true;
 
             GameController gc = new GameController();

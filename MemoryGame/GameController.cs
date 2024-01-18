@@ -10,6 +10,11 @@ namespace MemoryGame {
         private Stopwatch sw = new Stopwatch();
         private Game? currentGame = null;
 
+        private IGameRepository _gameRepository;
+        public GameController(IGameRepository gameRepository) {
+            _gameRepository = gameRepository;
+        }
+
         public Game InitializeGame(int amountCardPairs, string playerName) {
             Card[] cards = InitializeCards(amountCardPairs);
             Game game = new Game(cards, playerName);

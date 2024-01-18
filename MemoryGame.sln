@@ -5,9 +5,11 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryGame.ConsoleApp", "MemoryGame.ConsoleApp\MemoryGame.ConsoleApp.csproj", "{77D40FF7-B984-47C7-9064-B5E8FAD738E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGame.Tests", "MemoryGame.Tests\MemoryGame.Tests.csproj", "{D3105C5D-BAD5-4687-AB40-A178E6C108FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryGame.Tests", "MemoryGame.Tests\MemoryGame.Tests.csproj", "{D3105C5D-BAD5-4687-AB40-A178E6C108FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGame", "MemoryGame\MemoryGame.csproj", "{C8E59133-AD57-4FCF-99C7-6946F9A44E3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryGame", "MemoryGame\MemoryGame.csproj", "{C8E59133-AD57-4FCF-99C7-6946F9A44E3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGame.DataAccess.SqlServer", "MemoryGame.DataAccess.SqlServer\MemoryGame.DataAccess.SqlServer.csproj", "{7CCD4204-37F7-43A9-86D5-654D0D1C9EB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{C8E59133-AD57-4FCF-99C7-6946F9A44E3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8E59133-AD57-4FCF-99C7-6946F9A44E3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C8E59133-AD57-4FCF-99C7-6946F9A44E3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CCD4204-37F7-43A9-86D5-654D0D1C9EB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CCD4204-37F7-43A9-86D5-654D0D1C9EB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CCD4204-37F7-43A9-86D5-654D0D1C9EB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CCD4204-37F7-43A9-86D5-654D0D1C9EB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
