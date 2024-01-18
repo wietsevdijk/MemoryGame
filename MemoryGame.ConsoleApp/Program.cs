@@ -3,17 +3,14 @@
 namespace MemoryGame.ConsoleApp {
     internal class Program {
         static void Main(string[] args) {
-            GameRepository gameRepository = new GameRepository(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MemoryDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False;");
-
-
             bool debug = true;
 
-            GameController gc = new GameController();
+            GameRepository gamesDataAccess = new GameRepository(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MemoryDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False;");
+            GameController gc = new GameController(gamesDataAccess);
 
             Console.WriteLine("Wat is je naam?");
             string playerName = Console.ReadLine();
             Console.Clear();
-
 
             bool inputValid = false;
             int cardPairs = 0;
@@ -94,13 +91,24 @@ namespace MemoryGame.ConsoleApp {
             
 
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"\nGewonnen!" +
+            Console.WriteLine($"\n\nGewonnen!" +
             $"\nNaam: {game.PlayerName}" +
             $"\nTijd: {game.TimeElapsed} seconden" +
             $"\nBeurten: {game.Tries}" +
             $"\nScore: {game.Score}");
 
             Console.ForegroundColor = ConsoleColor.Gray;
+
+            gc.SaveGame();
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\nTop 10 scores:");
+            foreach (Game g in gc.GetHighScores()) {
+                Console.WriteLine($"\t{g.PlayerName} - {g.Score}");
+            }
+            Console.ForegroundColor = ConsoleColor.Gray;
+
+            Console.WriteLine("\nDruk op een toets om af te sluiten...");
         }
     }
 }
