@@ -10,6 +10,33 @@ namespace MemoryGame {
         private Stopwatch sw = new Stopwatch();
         private Game? currentGame = null;
 
+        private IGameRepository _gameRepository;
+        public GameController(IGameRepository gameRepository) {
+            _gameRepository = gameRepository;
+        }
+
+        public bool SaveGame() {
+            CheckIfGameActive();
+            bool gameSaved = false;
+
+            // If less than 10 games have been uploaded, simply upload the current game
+            if (_gameRepository.GetAll().Count < 10) {
+                _gameRepository.Insert(currentGame);
+                gameSaved = true;
+            } else if (currentGame.Score > _gameRepository.GetAll().Min(g => g.Score)) {
+            // If the current game has a higher score than the lowest score in the database, upload the current game and delete the lowest score
+                _gameRepository.Insert(currentGame);
+                _gameRepository.DeleteOldScores();
+                gameSaved = true;
+            }
+
+            return gameSaved;
+        }
+
+        public ICollection<Game> GetHighScores() {
+            return _gameRepository.GetAll().OrderByDescending(g => g.Score).ToList();
+        }
+
         public Game InitializeGame(int amountCardPairs, string playerName) {
             Card[] cards = InitializeCards(amountCardPairs);
             Game game = new Game(cards, playerName);

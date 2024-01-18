@@ -12,6 +12,8 @@ namespace MemoryGame
     {
         private Card[] _cardArray;
         public Card[] CardArray { get => _cardArray; set => _cardArray = value; }
+        private int _cardCount;
+        public int CardCount { get => _cardCount; set => _cardCount = value; }
         // Amount of attempts
         private int _tries = 0;
         public int Tries { get => _tries; set => _tries = value; }
@@ -35,7 +37,19 @@ namespace MemoryGame
 
         public Game(Card[] cards, string playerName) {
             _cardArray = cards;
+            _cardCount = cards.Length;
             _playerName = playerName;
+        }
+
+        // Used when retrieving played games from database
+        public Game(string playerName, int cardCount, double score, double timeElapsed, int attemptsTaken) {
+            _cardArray = Array.Empty<Card>();
+            _playerName = playerName;
+            _cardCount = cardCount;
+            _complete = true;
+            _timeElapsed = timeElapsed;
+            _score = score;
+            _tries = attemptsTaken;
         }
 
         public int GetValue(int cardPos) {

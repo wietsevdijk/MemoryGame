@@ -1,14 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MemoryGame.DataAccess.SqlServer\MemoryGame.DataAccess.SqlServer.csproj" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MemoryGame\MemoryGame.csproj" />
   </ItemGroup>
 
