@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryGame.Tests", "MemoryG
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryGame", "MemoryGame\MemoryGame.csproj", "{C8E59133-AD57-4FCF-99C7-6946F9A44E3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGame.DataAccess.SqlServer", "MemoryGame.DataAccess.SqlServer\MemoryGame.DataAccess.SqlServer.csproj", "{7CCD4204-37F7-43A9-86D5-654D0D1C9EB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryGame.DataAccess.SqlServer", "MemoryGame.DataAccess.SqlServer\MemoryGame.DataAccess.SqlServer.csproj", "{7CCD4204-37F7-43A9-86D5-654D0D1C9EB7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemoryGame.WpfApp", "MemoryGame.WpfApp\MemoryGame.WpfApp.csproj", "{335BC5E6-55A5-42F3-B8DC-6CEB164A4C20}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{EC07CCCD-A258-4D02-B5EC-FA682E28055D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +37,16 @@ Global
 		{7CCD4204-37F7-43A9-86D5-654D0D1C9EB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CCD4204-37F7-43A9-86D5-654D0D1C9EB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CCD4204-37F7-43A9-86D5-654D0D1C9EB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{335BC5E6-55A5-42F3-B8DC-6CEB164A4C20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{335BC5E6-55A5-42F3-B8DC-6CEB164A4C20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{335BC5E6-55A5-42F3-B8DC-6CEB164A4C20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{335BC5E6-55A5-42F3-B8DC-6CEB164A4C20}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D3105C5D-BAD5-4687-AB40-A178E6C108FA} = {EC07CCCD-A258-4D02-B5EC-FA682E28055D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {25DBE824-717A-4750-8CBC-7A156CABCA9D}

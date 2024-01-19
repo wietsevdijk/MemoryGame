@@ -14,7 +14,7 @@ namespace MemoryGame.Tests {
 
         [Test]
         public void GameController_CheckIfGameActive_ThrowsException() {
-            GameController gc = new GameController();
+            GameController gc = new GameController(null);
 
             // NOTE: CheckIfGameActive() is a private method, so we need to use a public one that calls it
             Assert.Throws<Exception>(() => gc.PrintCards());
@@ -22,7 +22,7 @@ namespace MemoryGame.Tests {
 
         [Test]
         public void GameController_CompareCards_ReturnsCorrectly() {
-            GameController gc = new GameController();
+            GameController gc = new GameController(null);
             Game game = gc.InitializeGame(4, "Test");
 
             game.CardArray = new Card[] {
@@ -50,7 +50,7 @@ namespace MemoryGame.Tests {
 
         [Test]
         public void GameController_CheckIfGameFinished_EndsGame() {
-            GameController gc = new GameController();
+            GameController gc = new GameController(null);
             Game game = gc.InitializeGame(2, "Test");
 
             game.CardArray = new Card[] {

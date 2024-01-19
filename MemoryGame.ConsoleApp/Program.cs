@@ -97,9 +97,14 @@ namespace MemoryGame.ConsoleApp {
             $"\nBeurten: {game.Tries}" +
             $"\nScore: {game.Score}");
 
-            Console.ForegroundColor = ConsoleColor.Gray;
+            
 
-            gc.SaveGame();
+            bool isTopTen = gc.SaveGame();
+
+            if(isTopTen) {
+                Console.WriteLine("\nGefeliciteerd! Je score is in de top 10 gekomen!");
+            }
+
 
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("\nTop 10 scores:");
