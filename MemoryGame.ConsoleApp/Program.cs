@@ -5,7 +5,7 @@ namespace MemoryGame.ConsoleApp {
         static void Main(string[] args) {
             bool debug = true;
 
-            GameRepository gamesDataAccess = new GameRepository(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MemoryDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False;");
+            GameRepository gamesDataAccess = new GameRepository(GlobalConfig.ConnectionString);
             GameController gc = new GameController(gamesDataAccess);
 
             Console.ForegroundColor = ConsoleColor.Gray;
