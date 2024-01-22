@@ -19,6 +19,7 @@ namespace MemoryGame.WpfApp.Views {
     /// </summary>
     public partial class StartView : UserControl {
         public StartView() {
+            DataContext = new ViewModels.StartViewModel();
             InitializeComponent();
         }
     }

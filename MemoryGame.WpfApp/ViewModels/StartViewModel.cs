@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using MemoryGame.WpfApp.Views;
+using MemoryGame.DataAccess.SqlServer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,15 +18,32 @@ namespace MemoryGame.WpfApp.ViewModels {
         [ObservableProperty]
         private int _cardPairCount;
 
-        public StartViewModel() {
-            StartGameCommand = new RelayCommand(StartGame);
-        }
+        [ObservableProperty]
+        private string _errorMessage = "";
 
-        public ICommand StartGameCommand { get; }
-
+        [RelayCommand]
         private void StartGame() {
-            MessageBox.Show("Kaas");
+            ErrorMessage = "";
+
+            if (CanStartGame()) {
+                GameRepository gamesDataAccess = new GameRepository(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MemoryDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False;");
+                GameController gc = new GameController();
+            
+            
+            }
         }
 
+        private bool CanStartGame() {
+            bool canStart = true;
+            if (string.IsNullOrWhiteSpace(PlayerName)) {
+                ErrorMessage += "Voer een naam in!\n";
+                canStart = false;
+            }
+            if (CardPairCount < 2) {
+                ErrorMessage += "Je moet met minstens 2 paren spelen!\n";
+                canStart = false;
+            }
+            return canStart;
+        }
     }
 }
