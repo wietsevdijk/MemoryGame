@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="MemoryGame.WpfApp.Views.StartView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MemoryGame.WpfApp.Views" 
+             xmlns:viewmodels="clr-namespace:MemoryGame.WpfApp.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:StartViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="LightGray">
+    <Grid>
+        <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Welkom bij memory!" FontSize="24" FontWeight="Bold"/>
+            <TextBlock Text="Wat is je naam?" FontSize="12"/>
+            <TextBox FontSize="12" Text="{Binding PlayerName, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBlock Text="Met hoe veel kaartparen wil je spelen?" FontSize="12"/>
+            <TextBox FontSize="12" Text="{Binding CardPairCount, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Button Content="Speel!" Command="{Binding StartGameCommand, Mode=OneWay}" Background="LightGreen" Margin="0,10,0,0"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
