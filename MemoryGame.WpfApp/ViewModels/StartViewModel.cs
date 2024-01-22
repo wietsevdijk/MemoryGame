@@ -26,13 +26,18 @@ namespace MemoryGame.WpfApp.ViewModels {
             ErrorMessage = "";
 
             if (CanStartGame()) {
-                GameRepository gamesDataAccess = new GameRepository(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MemoryDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False;");
-                GameController gc = new GameController();
+                GameRepository gamesDataAccess = new GameRepository(GlobalConfig.ConnectionString);
+                GameController gc = new GameController(gamesDataAccess);
+                Game game = gc.InitializeGame(CardPairCount, PlayerName);
             
-            
+                
             }
         }
 
+        /// <summary>
+        /// Check if input fields are valid
+        /// </summary>
+        /// <returns></returns>
         private bool CanStartGame() {
             bool canStart = true;
             if (string.IsNullOrWhiteSpace(PlayerName)) {
