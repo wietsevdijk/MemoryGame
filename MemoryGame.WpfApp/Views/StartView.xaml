@@ -8,6 +8,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="500" Background="LightGray">
     <Grid>
+        <Button Content="Leaderboard" 
+                Command="{Binding OpenLeaderboardCommand}" 
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Right"
+                Width="100"
+                Height="25"
+                Margin="0,10,10,0"
+                Background="LightPink"/>
         <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBlock Text="Welkom bij memory!" FontSize="24" FontWeight="Bold"/>
             <TextBlock Text="Wat is je naam?" FontSize="12"/>

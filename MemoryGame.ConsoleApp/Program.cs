@@ -103,9 +103,9 @@ namespace MemoryGame.ConsoleApp {
 
             
 
-            bool isTopTen = gc.SaveGame();
+            bool isHighScore = gc.SaveGame();
 
-            if(isTopTen) {
+            if(isHighScore) {
                 Console.WriteLine("\nGefeliciteerd! Je score is in de top 10 gekomen!");
             }
 

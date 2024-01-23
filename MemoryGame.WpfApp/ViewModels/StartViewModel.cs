@@ -36,6 +36,12 @@ namespace MemoryGame.WpfApp.ViewModels {
             }
         }
 
+        [RelayCommand]
+        public void OpenLeaderboard() {
+            LeaderboardWindow leaderboardWindow = new();
+            leaderboardWindow.Show();
+        }
+
         /// <summary>
         /// Check if input fields are valid
         /// </summary>

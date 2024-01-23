@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MemoryGame.WpfApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,38 +12,101 @@ using System.Windows.Forms;
 namespace MemoryGame.WpfApp.ViewModels {
     public partial class GameWindowViewModel : ObservableObject {
         private GameController _controller;
-        [ObservableProperty]
+        private readonly GameWindow _window;
         private Game _game;
 
         [ObservableProperty]
-        private ObservableCollection<Card> _cardList;
+        private List<Card> _cardList;
 
         private bool _useCustomImages;
 
-        public GameWindowViewModel(Game game, GameController gameController, bool useCustomImages) {
+        public GameWindowViewModel(GameWindow window, Game game, GameController gameController, bool useCustomImages) {
+            _window = window;
             _useCustomImages = useCustomImages;
 
             _controller = gameController;
-
             _game = game;
+            
+            CardList = _game.CardArray.ToList();
+        }
+
+
+        // NIET MEER GEBRUIKT
+        [RelayCommand]
+        public void FlipCard(int cardPos) {
+            bool success = _controller.FlipCard(cardPos);
             
             UpdateCards();
         }
 
+        private int firstCardPosition = 0;
         [RelayCommand]
-        public void FlipCard(int cardPos) {
-            bool success = _controller.FlipCard(cardPos);
-            UpdateCards();
+        public async Task CardClicked(int clickedCardPosition) {
 
+            // Als er 2 keer op dezelfde kaart wordt geklikt
+            if (firstCardPosition == clickedCardPosition) {
+                firstCardPosition = clickedCardPosition;
+                return;
+            }
+            // Als het om de eerste kaart gaat
+            else if (firstCardPosition == 0) {
+                firstCardPosition = clickedCardPosition;
+
+                _controller.FlipCard(clickedCardPosition);
+            } 
+            // Als het om de tweede kaart gaat
+            else {
+                _controller.FlipCard(clickedCardPosition);
+                UpdateCards();
+
+                bool match = _controller.CompareCards(firstCardPosition, clickedCardPosition);
+             
+                if (!match) {
+                    await ResetCardsAfterDelay(firstCardPosition, clickedCardPosition);
+                }
+
+                // Check if game is finished
+                if (_game.Complete) {
+                    bool isHighScore = _controller.SaveGame();
+
+                    string message = $"Gewonnen!" +
+                        $"\nNaam: {_game.PlayerName}" +
+                        $"\nTijd: {_game.TimeElapsed} seconden" +
+                        $"\nBeurten: {_game.Tries}" +
+                        $"\nScore: {_game.Score}";
+
+                    if (isHighScore) {
+                        message += "\n\nGefeliciteerd! Je score is in de top 10 gekomen!";
+                    }
+
+                    MessageBox.Show(message);
+
+                    _window.Close();
+                    
+                    LeaderboardWindow leaderboardWindow = new LeaderboardWindow();
+                    leaderboardWindow.Show();
+                }
+
+                // Reset
+                firstCardPosition = 0;
+            }
+
+            UpdateCards();
         }
 
-        private void UpdateCards() {
-            List<Card> cards = Game.CardArray.ToList();
+        private async Task ResetCardsAfterDelay(int firstCardPosition, int secondCardPosition) { 
+            await Task.Delay(1000);
 
-            CardList = new ObservableCollection<Card>();
-            foreach (Card card in cards) {
-                CardList.Add(card);
-            }
+            _controller.FlipDownCard(firstCardPosition);
+            _controller.FlipDownCard(secondCardPosition);
+        }
+
+        /// <summary>
+        /// Update de kaarten in de GUI.
+        /// Dit zou wellicht beter kunnen via een event, maar is geen prioriteit nu.
+        /// </summary>
+        private void UpdateCards() {
+            CardList = _game.CardArray.ToList();
         }
     }
 }

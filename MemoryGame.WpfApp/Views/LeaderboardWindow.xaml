@@ -1,0 +1,26 @@
+﻿<Window x:Class="MemoryGame.WpfApp.Views.LeaderboardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MemoryGame.WpfApp.Views" 
+        xmlns:viewmodels="clr-namespace:MemoryGame.WpfApp.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:LeaderboardViewModel}"
+        mc:Ignorable="d"
+        Title="LeaderboardWindow" Height="320" Width="500" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Leaderboard" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" FontWeight="Bold"/>
+        <DataGrid Grid.Row="1" Name="DG1" ItemsSource="{Binding HighScoreList}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Naam" Width="*" Binding="{Binding PlayerName}"/>
+                <DataGridTextColumn Header="Score" Width="*" Binding="{Binding Score}" />
+                <DataGridTextColumn Header="Aantal kaarten" Width="*" Binding="{Binding Tries}" />
+                <DataGridTextColumn Header="Tijd (seconden)" Width="*" Binding="{Binding TimeElapsed}" />
+                <DataGridTextColumn Header="Beurten" Width="*" Binding="{Binding CardCount}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

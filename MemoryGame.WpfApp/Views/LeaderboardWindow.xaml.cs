@@ -14,13 +14,12 @@ using System.Windows.Shapes;
 
 namespace MemoryGame.WpfApp.Views {
     /// <summary>
-    /// Interaction logic for GameWindow.xaml
+    /// Interaction logic for LeaderboardWindow.xaml
     /// </summary>
-    public partial class GameWindow : Window {
-        public GameWindow(Game game, GameController gameController, bool useCustomImages) {
-            DataContext = new ViewModels.GameWindowViewModel(this, game, gameController, useCustomImages);
+    public partial class LeaderboardWindow : Window {
+        public LeaderboardWindow() {
+            DataContext = new ViewModels.LeaderboardViewModel();
             InitializeComponent();
         }
-
     }
 }
