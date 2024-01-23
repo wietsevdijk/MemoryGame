@@ -69,17 +69,17 @@ namespace MemoryGame.WpfApp.ViewModels {
                 if (_game.Complete) {
                     bool isHighScore = _controller.SaveGame();
 
-                    string message = $"Gewonnen!" +
+                    string victoryMessage = $"Gewonnen!" +
                         $"\nNaam: {_game.PlayerName}" +
                         $"\nTijd: {_game.TimeElapsed} seconden" +
                         $"\nBeurten: {_game.Tries}" +
                         $"\nScore: {_game.Score}";
 
                     if (isHighScore) {
-                        message += "\n\nGefeliciteerd! Je score is in de top 10 gekomen!";
+                        victoryMessage += "\n\nGefeliciteerd! Je score is in de top 10 gekomen!";
                     }
 
-                    MessageBox.Show(message);
+                    MessageBox.Show(victoryMessage);
 
                     _window.Close();
                     
