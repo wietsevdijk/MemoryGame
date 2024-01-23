@@ -26,14 +26,14 @@ namespace MemoryGame.Tests {
             Game game = gc.InitializeGame(4, "Test");
 
             game.CardArray = new Card[] {
-                new Card(1), //i0 - c1
-                new Card(1), //i1 - c2
-                new Card(2), //i2 - c3
-                new Card(2), //i3 - c4
-                new Card(3), //i4 - c5
-                new Card(3), //i5 - c6
-                new Card(4), //i6 - c7
-                new Card(4)  //i7 - c8
+                new Card(0, 1), //i0 - c1
+                new Card(1, 1), //i1 - c2
+                new Card(2, 2), //i2 - c3
+                new Card(3, 2), //i3 - c4
+                new Card(4, 3), //i4 - c5
+                new Card(5, 3), //i5 - c6
+                new Card(6, 4), //i6 - c7
+                new Card(7, 4)  //i7 - c8
             };
 
             // Test if matching cards returns correctly
@@ -54,10 +54,10 @@ namespace MemoryGame.Tests {
             Game game = gc.InitializeGame(2, "Test");
 
             game.CardArray = new Card[] {
-                new Card(1), //i0 - c1
-                new Card(1), //i1 - c2
-                new Card(2), //i2 - c3
-                new Card(2)  //i3 - c4
+                new Card(0, 1), //i0 - c1
+                new Card(1, 1), //i1 - c2
+                new Card(2, 2), //i2 - c3
+                new Card(3, 2)  //i3 - c4
             };
 
             gc.CompareCards(1, 2);
