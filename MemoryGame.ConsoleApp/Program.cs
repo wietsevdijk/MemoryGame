@@ -5,8 +5,10 @@ namespace MemoryGame.ConsoleApp {
         static void Main(string[] args) {
             bool debug = true;
 
-            GameRepository gamesDataAccess = new GameRepository(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MemoryDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False;");
+            GameRepository gamesDataAccess = new GameRepository(GlobalConfig.ConnectionString);
             GameController gc = new GameController(gamesDataAccess);
+
+            Console.ForegroundColor = ConsoleColor.Gray;
 
             Console.WriteLine("Wat is je naam?");
             string playerName = Console.ReadLine();
@@ -40,8 +42,8 @@ namespace MemoryGame.ConsoleApp {
                 int i1 = int.Parse(Console.ReadLine());
                 if (game.GetDiscovered(i1)) {
                     Console.WriteLine("Kaart 1 is al omgedraaid!");
-                    Thread.Sleep(1500);
-                    Console.Clear();
+                    Console.WriteLine("\nDruk op een toets om verder te spelen...");
+                    Console.ReadKey();
                     continue;
                 }
                 Console.ForegroundColor = ConsoleColor.Blue;
@@ -53,8 +55,8 @@ namespace MemoryGame.ConsoleApp {
                 int i2 = int.Parse(Console.ReadLine());
                 if (game.GetDiscovered(i2)) {
                     Console.WriteLine("Kaart 2 is al omgedraaid!");
-                    Thread.Sleep(1500);
-                    Console.Clear();
+                    Console.WriteLine("\nDruk op een toets om verder te spelen...");
+                    Console.ReadKey();
                     continue;
                 }
                 Console.ForegroundColor = ConsoleColor.Blue;
@@ -64,8 +66,8 @@ namespace MemoryGame.ConsoleApp {
                 //Check of keuzes niet gelijk zijn
                 if (i1 == i2) {
                     Console.WriteLine("Je kan niet dezelfde kaart kiezen!");
-                    Thread.Sleep(1500);
-                    Console.Clear();
+                    Console.WriteLine("\nDruk op een toets om verder te spelen...");
+                    Console.ReadKey();
                     continue;
                 }
 
@@ -85,7 +87,9 @@ namespace MemoryGame.ConsoleApp {
                 }
 
                 //TODO: Elegantere manier
-                Thread.Sleep(1500);
+                Console.WriteLine("\nDruk op een toets om verder te spelen...");
+                Console.ReadKey();
+
                 Console.Clear();
             }
             
@@ -99,9 +103,9 @@ namespace MemoryGame.ConsoleApp {
 
             
 
-            bool isTopTen = gc.SaveGame();
+            bool isHighScore = gc.SaveGame();
 
-            if(isTopTen) {
+            if(isHighScore) {
                 Console.WriteLine("\nGefeliciteerd! Je score is in de top 10 gekomen!");
             }
 

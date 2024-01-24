@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -54,14 +55,33 @@ namespace MemoryGame {
             // Build array of cards with values 0 to amountCardPairs * 2
             int cardValue = 0;
             for (int i = 0; i < amountCardPairs * 2; i++) {
-                cards[i] = new Card(cardValue);
+                cards[i] = new Card(0, cardValue);
                 if (!(i % 2 == 0)) cardValue++;
             }
 
             // Shuffle card array
             Shuffle(cards);
 
+            // Attach position as property for use in GUI
+            for (int i = 1; i <= cards.Length; i++) {
+                cards[i - 1].Position = i;
+            }
+
             return cards;
+        }
+
+        public bool FlipCard(int cardPos) {
+            CheckIfGameActive();
+
+            // Check if card is already discovered
+            if (currentGame.GetDiscovered(cardPos)) {
+                return false;
+            }
+
+            // Flip the card
+            currentGame.CardArray[cardPos - 1].Flipped = !currentGame.CardArray[cardPos - 1].Flipped;
+
+            return true;
         }
 
         public bool FlipUpCard(int cardPos) {

@@ -1,0 +1,12 @@
+Stappen:
+1. Maak in de SQL Server Object explorer de database "MemoryDatabase" aan.
+2. Maak hierin de tabel "Games" aan met het volgende script:
+
+CREATE TABLE [dbo].[Games] (
+    [Id]            INT           IDENTITY (1, 1) NOT NULL,
+    [PlayerName]    VARCHAR (255) NOT NULL,
+    [CardCount]     INT           NOT NULL,
+    [Score]         FLOAT (53)    NOT NULL,
+    [TimeElapsed]   FLOAT (53)    NOT NULL,
+    [AttemptsTaken] INT           NOT NULL
+);
