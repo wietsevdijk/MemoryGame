@@ -1,19 +1,6 @@
-    IF NOT EXISTS(SELECT * FROM sys.databases WHERE name = 'MemoryDatabase')
-  BEGIN
-    CREATE DATABASE [MemoryDatabase]
-
-
-    END
-
-USE [MemoryDatabase]
-GO
-
-/****** Object: Table [dbo].[Games] Script Date: 22/01/2024 18:53:16 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
+Stappen:
+1. Maak in de SQL Server Object explorer de database "MemoryDatabase" aan.
+2. Maak hierin de tabel "Games" aan met het volgende script:
 
 CREATE TABLE [dbo].[Games] (
     [Id]            INT           IDENTITY (1, 1) NOT NULL,
@@ -23,5 +10,3 @@ CREATE TABLE [dbo].[Games] (
     [TimeElapsed]   FLOAT (53)    NOT NULL,
     [AttemptsTaken] INT           NOT NULL
 );
-
-
