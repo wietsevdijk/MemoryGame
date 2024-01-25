@@ -22,5 +22,14 @@ namespace MemoryGame.WpfApp.Views {
             InitializeComponent();
         }
 
+        public BitmapImage GenerateBitmapImage(string filePath) {
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(filePath, UriKind.Relative);
+            image.EndInit();
+
+            return image;
+        }
+
     }
 }

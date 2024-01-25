@@ -21,7 +21,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Button IsEnabled="{Binding CardAvailable}" 
-                                Content="{Binding VisibleValue}"
+                                
                                 Tag="{Binding Position}" 
                                 Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.CardClickedCommand}"
                                 CommandParameter="{Binding Position}"
@@ -30,8 +30,12 @@
                                 Margin="5" 
                                 Foreground="Blue"
                                 FontWeight="Bold"
-                                FontSize="32"
-                                >
+                                FontSize="32">
+                            <Image x:Name="CardImage"
+                                   Stretch="UniformToFill"
+                                   Source="{Binding BacksideImage}">
+                            </Image>
+
                         </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
