@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace MemoryGame.WpfApp.ViewModels {
     public partial class GameWindowViewModel : ObservableObject {
@@ -28,6 +30,14 @@ namespace MemoryGame.WpfApp.ViewModels {
             _game = game;
             
             CardList = _game.CardArray.ToList();
+
+            foreach (Card card in CardList) {
+                string imagePath = (string)card.BacksideImage;
+
+                ImageBrush imageBrush = new ImageBrush(SetImage(imagePath));
+
+                card.BacksideImage = imageBrush;
+            }
         }
 
 
@@ -107,6 +117,22 @@ namespace MemoryGame.WpfApp.ViewModels {
         /// </summary>
         private void UpdateCards() {
             CardList = _game.CardArray.ToList();
+
+            foreach (Card card in CardList) {
+                string imagePath = (string)card.BacksideImage;
+
+                ImageBrush imageBrush = new ImageBrush(SetImage(imagePath));
+
+                card.BacksideImage = imageBrush;
+            }
+        }
+
+        private BitmapImage SetImage(string imagePath) {
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri(imagePath, UriKind.Relative);
+            image.EndInit();
+            return image;
         }
     }
 }

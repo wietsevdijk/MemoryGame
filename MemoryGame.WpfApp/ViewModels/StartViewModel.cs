@@ -4,6 +4,7 @@ using MemoryGame.DataAccess.SqlServer;
 using MemoryGame.WpfApp.Views;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,12 @@ namespace MemoryGame.WpfApp.ViewModels {
         public void OpenLeaderboard() {
             LeaderboardWindow leaderboardWindow = new();
             leaderboardWindow.Show();
+        }
+
+        public StartViewModel() {
+            if (!Directory.Exists(GlobalConfig.ImageFilePath)) {
+                Directory.CreateDirectory(GlobalConfig.ImageFilePath);
+            }
         }
 
         /// <summary>

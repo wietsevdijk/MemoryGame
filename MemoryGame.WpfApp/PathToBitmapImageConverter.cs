@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace MemoryGame.WpfApp {
@@ -18,7 +19,9 @@ namespace MemoryGame.WpfApp {
             image.UriSource = new Uri(filePath, UriKind.Relative);
             image.EndInit();
 
-            return image;
+            ImageBrush imageBrush = new ImageBrush(image);
+
+            return imageBrush;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
