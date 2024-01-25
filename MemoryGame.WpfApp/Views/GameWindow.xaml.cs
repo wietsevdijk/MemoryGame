@@ -21,15 +21,5 @@ namespace MemoryGame.WpfApp.Views {
             DataContext = new ViewModels.GameWindowViewModel(this, game, gameController, useCustomImages);
             InitializeComponent();
         }
-
-        public BitmapImage GenerateBitmapImage(string filePath) {
-            BitmapImage image = new BitmapImage();
-            image.BeginInit();
-            image.UriSource = new Uri(filePath, UriKind.Relative);
-            image.EndInit();
-
-            return image;
-        }
-
     }
 }
