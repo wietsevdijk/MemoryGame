@@ -34,7 +34,7 @@
                             
                             FontWeight="Bold"
                             FontSize="32">
-                            <Image Source="{Binding VisibleImage}"/>
+                            <Image Source="{Binding VisibleImage}" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
