@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 namespace MemoryGame {
     public static class GlobalConfig {
         public const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=MemoryDatabase;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False;";
-        public const string ImageFilePath = "cardImages/";    
+        
+        private static readonly string _currentDirectory = Environment.CurrentDirectory;
+        public static string ImageFilePath = _currentDirectory + @"\cardImages\";    
     }
 }

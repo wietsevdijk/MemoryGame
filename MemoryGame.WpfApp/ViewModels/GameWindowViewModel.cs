@@ -30,14 +30,6 @@ namespace MemoryGame.WpfApp.ViewModels {
             _game = game;
             
             CardList = _game.CardArray.ToList();
-
-            foreach (Card card in CardList) {
-                string imagePath = (string)card.BacksideImage;
-
-                ImageBrush imageBrush = new ImageBrush(SetImage(imagePath));
-
-                card.BacksideImage = imageBrush;
-            }
         }
 
 
@@ -117,14 +109,6 @@ namespace MemoryGame.WpfApp.ViewModels {
         /// </summary>
         private void UpdateCards() {
             CardList = _game.CardArray.ToList();
-
-            foreach (Card card in CardList) {
-                string imagePath = (string)card.BacksideImage;
-
-                ImageBrush imageBrush = new ImageBrush(SetImage(imagePath));
-
-                card.BacksideImage = imageBrush;
-            }
         }
 
         private BitmapImage SetImage(string imagePath) {
