@@ -39,7 +39,7 @@ namespace MemoryGame.WpfApp.ViewModels {
             Game game;
             if (UseCustomImages) {
                 if(Directory.EnumerateFiles(GlobalConfig.ImageFilePath).Count() < CardPairCount) {
-                    ErrorMessage = "Er zijn niet genoeg foto's geupload!";
+                    ErrorMessage = "Er zijn niet genoeg foto's geupload!\n";
                     return;
                 }
 
