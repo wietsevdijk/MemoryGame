@@ -166,7 +166,7 @@ namespace MemoryGame {
                 Console.Write($"{currentGame.CardArray[i].Value} ");
             }
             Console.WriteLine();
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ResetColor();
         }
 
 

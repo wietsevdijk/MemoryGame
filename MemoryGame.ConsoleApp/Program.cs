@@ -8,7 +8,7 @@ namespace MemoryGame.ConsoleApp {
             GameRepository gamesDataAccess = new GameRepository(GlobalConfig.ConnectionString);
             GameController gc = new GameController(gamesDataAccess);
 
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ResetColor();
 
             Console.WriteLine("Wat is je naam?");
             string playerName = Console.ReadLine();
@@ -31,6 +31,7 @@ namespace MemoryGame.ConsoleApp {
 
             //gameloop
             while (!game.Complete) {
+                Console.Clear();
                 if (debug) {
                     gc.PrintCardsWithValues();
                 }
@@ -48,7 +49,7 @@ namespace MemoryGame.ConsoleApp {
                 }
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"Kaart 1 is: {game.GetValue(i1)}\n");
-                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.ResetColor();
 
                 Console.Write("Kies 2e kaart: ");
                 // TO-DO: Handel ongeldige input af
@@ -61,7 +62,7 @@ namespace MemoryGame.ConsoleApp {
                 }
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"Kaart 2 is: {game.GetValue(i2)}\n");
-                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.ResetColor();
 
                 //Check of keuzes niet gelijk zijn
                 if (i1 == i2) {
@@ -76,21 +77,19 @@ namespace MemoryGame.ConsoleApp {
                 if (match) {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write("Match!");
-                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.ResetColor();
 
                     if(game.Complete) { break;}
 
                 } else {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write("Geen match");
-                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.ResetColor();
                 }
 
                 //TODO: Elegantere manier
                 Console.WriteLine("\nDruk op een toets om verder te spelen...");
                 Console.ReadKey();
-
-                Console.Clear();
             }
             
 
@@ -115,7 +114,7 @@ namespace MemoryGame.ConsoleApp {
             foreach (Game g in gc.GetHighScores()) {
                 Console.WriteLine($"\t{g.PlayerName} - {g.Score}");
             }
-            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.ResetColor();
 
             Console.WriteLine("\nDruk op een toets om af te sluiten...");
         }
