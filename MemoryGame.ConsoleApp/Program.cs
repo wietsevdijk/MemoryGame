@@ -18,12 +18,13 @@ namespace MemoryGame.ConsoleApp {
             int cardPairs = 0;
             while (!inputValid) {
                 Console.WriteLine("Hoeveel paren aan kaarten wil je hebben?");
-                inputValid = int.TryParse(Console.ReadLine(), out int input);
+                bool isNumber = int.TryParse(Console.ReadLine(), out int input);
+                inputValid = isNumber && input > 1;
                 if (inputValid) { 
                     cardPairs = input;
                     continue; 
                 }
-                Console.WriteLine("Voer een nummer in!");
+                Console.WriteLine("Voer een nummer in dat hoger is dan 1!");
             }
             Console.Clear();
 
@@ -40,7 +41,9 @@ namespace MemoryGame.ConsoleApp {
 
                 Console.Write("Kies 1e kaart: ");
                 // TO-DO: Handel ongeldige input af
+
                 int i1 = int.Parse(Console.ReadLine());
+
                 if (game.GetDiscovered(i1)) {
                     Console.WriteLine("Kaart 1 is al omgedraaid!");
                     Console.WriteLine("\nDruk op een toets om verder te spelen...");
