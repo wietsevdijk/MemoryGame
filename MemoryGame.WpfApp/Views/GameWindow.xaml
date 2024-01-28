@@ -10,7 +10,6 @@
         Title="GameWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
-        <src:PathToBitmapImageConverter x:Key="PathToBitmapImageConverter" />
     </Window.Resources>
     <Grid>
         <ScrollViewer x:Name="GameBoard" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
@@ -24,17 +23,26 @@
                     <DataTemplate>
                         <Button 
                             IsEnabled="{Binding CardAvailable}"
-                            
                             Tag="{Binding Position}" 
                             Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.CardClickedCommand}"
                             CommandParameter="{Binding Position}"
                             Height="150" 
                             Width="100" 
-                            Margin="5" 
-                            
-                            FontWeight="Bold"
-                            FontSize="32">
-                            <Image Source="{Binding VisibleImage}" Stretch="UniformToFill" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            Margin="5">
+                            <Button.Content>
+                                <Grid>
+                                    <TextBlock Text="{Binding Value}"
+                                               Visibility="{Binding Flipped, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                               FontWeight="Bold"
+                                               FontSize="32"
+                                               Foreground="Blue"/>
+                                    <Image Source="{Binding FrontsideImage}" 
+                                           Visibility="{Binding Flipped, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                           Stretch="UniformToFill" 
+                                           HorizontalAlignment="Center" 
+                                           VerticalAlignment="Center"/>
+                                </Grid>
+                            </Button.Content>
                         </Button>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
