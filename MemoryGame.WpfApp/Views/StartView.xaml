@@ -38,7 +38,12 @@
                         Width="85"
                         HorizontalAlignment="Right"/>
             </DockPanel>
-            
+
+            <TextBlock FontSize="12">
+                <Run Text="Foto's geupload:"/>
+                <Run Text="{Binding UploadedImageCount}"/>
+            </TextBlock>
+
             <Button Content="Speel!" Command="{Binding StartGameCommand}" Background="LightGreen" Padding="5"/>
         </StackPanel>
         <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" FontSize="12" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,-5" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>

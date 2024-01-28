@@ -27,6 +27,9 @@ namespace MemoryGame.WpfApp.ViewModels {
         [ObservableProperty]
         private bool _useCustomImages;
 
+        [ObservableProperty]
+        private int _uploadedImageCount = 0;
+
         [RelayCommand]
         private void StartGame() {
             ErrorMessage = "";
@@ -73,7 +76,9 @@ namespace MemoryGame.WpfApp.ViewModels {
                     File.Copy(imagePath, destinationPath, true);
                 }
 
-                ErrorMessage = $"Succesvol {customImagePaths.Count} afbeelding{(customImagePaths.Count > 1 ? "en" : string.Empty)} toegevoegd!";
+                UploadedImageCount = Directory.EnumerateFiles(GlobalConfig.ImageFilePath).Count();
+
+                ErrorMessage = $"Succesvol {customImagePaths.Count} afbeelding{(customImagePaths.Count > 1 ? "en" : string.Empty)} toegevoegd!\n";
             }
         }
 
