@@ -13,9 +13,9 @@ namespace MemoryGame {
         public int Value { get => _value; set => _value = value; }
         private bool _discovered;
         public bool Discovered { get => _discovered; set => _discovered = value; }
-        private string _backsideImage = GlobalConfig.ImageFilePath + "asdachterkant.jpg";
+        private string _backsideImage = GlobalConfig.ImageFilePath + "achterkant.jpg";
         public string BacksideImage { get => _backsideImage; set => _backsideImage = value; }
-        private string _frontsideImage = GlobalConfig.ImageFilePath + "dsavoorkant.jpg";
+        private string _frontsideImage = GlobalConfig.ImageFilePath + "dasvoorkant.jpg";
         public string FrontsideImage { get => _frontsideImage; set => _frontsideImage = value; }
 
         // NOTE: All properties below are only used for the GUI
@@ -28,6 +28,15 @@ namespace MemoryGame {
             _value = inputValue;
             _flipped = false;
             _discovered = false;
+        }
+
+        public Card(int id, int inputValue, string imagePath) {
+            _position = id;
+            _value = inputValue;
+            _flipped = false;
+            _discovered = false;
+
+            _frontsideImage = imagePath;
         }
 
         private bool CheckCardAvailable() {

@@ -20,18 +20,14 @@ namespace MemoryGame.WpfApp.ViewModels {
         [ObservableProperty]
         private List<Card> _cardList;
 
-        private bool _useCustomImages;
-
-        public GameWindowViewModel(GameWindow window, Game game, GameController gameController, bool useCustomImages) {
+        public GameWindowViewModel(GameWindow window, Game game, GameController gameController) {
             _window = window;
-            _useCustomImages = useCustomImages;
 
             _controller = gameController;
             _game = game;
             
             CardList = _game.CardArray.ToList();
         }
-
 
         // NIET MEER GEBRUIKT
         [RelayCommand]

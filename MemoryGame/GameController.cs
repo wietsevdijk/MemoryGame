@@ -48,6 +48,17 @@ namespace MemoryGame {
             return game;
         }
 
+        //OVERLOAD: Used for custom images
+        public Game InitializeGame(int amountCardPairs, string playerName, string[] imageFilePaths) {
+            Card[] cards = InitializeCards(amountCardPairs, imageFilePaths);
+            Game game = new Game(cards, playerName);
+
+            currentGame = game;
+            sw.Start();
+
+            return game;
+        }
+
         //Returns array of shuffled cards
         public Card[] InitializeCards(int amountCardPairs) {
             Card[] cards = new Card[amountCardPairs * 2];
@@ -56,6 +67,32 @@ namespace MemoryGame {
             int cardValue = 0;
             for (int i = 0; i < amountCardPairs * 2; i++) {
                 cards[i] = new Card(0, cardValue);
+                if (!(i % 2 == 0)) cardValue++;
+            }
+
+            // Shuffle card array
+            Shuffle(cards);
+
+            // Attach position as property for use in GUI
+            for (int i = 1; i <= cards.Length; i++) {
+                cards[i - 1].Position = i;
+            }
+
+            return cards;
+        }
+
+        //OVERLOAD: Returns array of shuffled cards with images
+        public Card[] InitializeCards(int amountCardPairs, string[] imageFilePaths) {
+            if (imageFilePaths.Length < amountCardPairs) {
+                throw new Exception("Not enough images provided!");
+            }
+
+            Card[] cards = new Card[amountCardPairs * 2];
+
+            // Build array of cards with values 0 to amountCardPairs * 2
+            int cardValue = 0;
+            for (int i = 0; i < amountCardPairs * 2; i++) {
+                cards[i] = new Card(0, cardValue, imageFilePaths[cardValue]);
                 if (!(i % 2 == 0)) cardValue++;
             }
 

@@ -17,8 +17,8 @@ namespace MemoryGame.WpfApp.Views {
     /// Interaction logic for GameWindow.xaml
     /// </summary>
     public partial class GameWindow : Window {
-        public GameWindow(Game game, GameController gameController, bool useCustomImages) {
-            DataContext = new ViewModels.GameWindowViewModel(this, game, gameController, useCustomImages);
+        public GameWindow(Game game, GameController gameController) {
+            DataContext = new ViewModels.GameWindowViewModel(this, game, gameController);
             InitializeComponent();
         }
     }

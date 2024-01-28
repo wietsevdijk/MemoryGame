@@ -24,7 +24,22 @@
             <TextBlock Text="Met hoe veel kaartparen wil je spelen?" FontSize="12"/>
             <TextBox FontSize="12" Text="{Binding CardPairCount, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <Button Content="Speel!" Command="{Binding StartGameCommand}" Background="LightGreen" Margin="0,10,0,0"/>
+            <DockPanel Margin="0,5,0,0">
+                <CheckBox Content="Speel met foto's" 
+                          IsChecked="{Binding UseCustomImages}"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center"/>
+
+                <Button Content="Upload foto's" 
+                        Command="{Binding OpenUploadImagesWindowCommand}" 
+                        IsEnabled="{Binding UseCustomImages}"
+                        Background="LightBlue"
+                        Padding="3"
+                        Width="85"
+                        HorizontalAlignment="Right"/>
+            </DockPanel>
+            
+            <Button Content="Speel!" Command="{Binding StartGameCommand}" Background="LightGreen" Margin="0,10,0,0" Padding="5"/>
         </StackPanel>
         <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" FontSize="12" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,10" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
     </Grid>
